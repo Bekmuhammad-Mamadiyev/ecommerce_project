@@ -22,16 +22,16 @@ class Settings(models.Model):
     def __str__(self):
         return self.home_title
 
-class Region(models.Model):
+class Country(models.Model):
     name = models.CharField(_('name'), max_length=120)
     code = models.CharField(_('code'), max_length=2)
 
     def __str__(self):
         return self.name
 
-class District(models.Model):
+class Region(models.Model):
     name = models.CharField(_('name'), max_length=150)
-    region = models.ForeignKey(Region, related_name='regions', on_delete=models.CASCADE, null=True)
+    region = models.ForeignKey(Country, related_name='regions', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
