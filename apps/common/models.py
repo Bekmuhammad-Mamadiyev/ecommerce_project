@@ -15,7 +15,7 @@ class Media(models.Model):
         return self.type
 
 class Settings(models.Model):
-    home_image = models.ForeignKey(Media, related_name='home_images', on_delete=models.SET_NULL)
+    home_image = models.ForeignKey(Media, related_name='home_images', on_delete=models.CASCADE)
     home_title = models.CharField(_('home title'), max_length=200)
     home_subtitle = models.CharField(_('home subtitle'), max_length=200)
 
@@ -49,7 +49,7 @@ class CustomerFeedback(models.Model):
     rank = models.IntegerField(_('rank'), )
     customer_name = models.CharField(_('customer name'), max_length=200)
     customer_position = models.CharField(_('customer position'), max_length=200)
-    customer_image = models.ForeignKey(Media, related_name='customer_images', on_delete=models.SET_NULL, null=True)
+    customer_image = models.ForeignKey(Media, related_name='customer_images', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.customer_name
