@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mptt',
     'django_ckeditor_5',
+    'rest_framework',
 ]
 LOCAL_APPS = [
     'apps.accounts',

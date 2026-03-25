@@ -9,7 +9,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         try:
-            with open(str(BASE_DIR) + "/data/countries.json") as f:
+            with open(str(BASE_DIR) + "/data/countries.json" ,encoding='utf-8-sig') as f:
                 countries = json.load(f)
                 for country in countries:
                     Country.objects.get_or_create(name=country['name_uz'], code=country['code'])

@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
 
 from django.db import models
@@ -6,7 +7,7 @@ from django.db import models
 from .managers import UserManager
 
 class User(AbstractUser):
-    phone_number = models.CharField(_('Phone_number'),max_length=11, unique=True)
+    phone_number = models.CharField(_('Phone_number'),max_length=11,)
     address = models.TextField(_('Address'),)
     email = models.EmailField(_('Email'), max_length=100, unique=True)
     username = models.CharField(
@@ -47,11 +48,13 @@ class VerificationOTP(models.Model):
 class UserAddress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_addresses')
     name = models.CharField(_('Name'), max_length=200)
-    phone_number = models.CharField(_('Phone_number'), max_length=15)
+    phone_number = models.CharField(_('Phone_number'), max_length=15, validators=[RegexValidator(
+        regex=r'\+\((?:998\))([0-9]{2})([0-9]{3})(\d{2})(\d{2})'),
+    ], null=True, blank=True)
     apartment = models.CharField(_('Apartment'), max_length=200)
     street = models.TextField(_('Street'))
     #city = models.ForeignKey()
-    pincode = models.CharField(_('Pincode'), max_length=50)
+    pincode = models.CharField(_('Pincode'), max_length=50, validators=[RegexValidator(r'^\d{6}$')])
 
     def __str__(self):
         return f'{self.user.email} {self.name}'
