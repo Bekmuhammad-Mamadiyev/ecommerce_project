@@ -19,3 +19,4 @@ class CustomerFeedbackAdmin(admin.ModelAdmin):
         return False
 
 admin.site.register(CustomerFeedback, CustomerFeedbackAdmin)
+

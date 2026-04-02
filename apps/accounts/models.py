@@ -48,9 +48,9 @@ class VerificationOTP(models.Model):
 class UserAddress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_addresses')
     name = models.CharField(_('Name'), max_length=200)
-    phone_number = models.CharField(_('Phone_number'), max_length=15, validators=[RegexValidator(
-        regex=r'\+\((?:998\))([0-9]{2})([0-9]{3})(\d{2})(\d{2})'),
-    ], null=True, blank=True)
+    phone_number = models.CharField(_('Phone_number'), max_length=15, null=True, blank=True)
+    # validators = [RegexValidator(
+    #     regex=r'\((998)[0-9]{9})')
     apartment = models.CharField(_('Apartment'), max_length=200)
     street = models.TextField(_('Street'))
     #city = models.ForeignKey()
