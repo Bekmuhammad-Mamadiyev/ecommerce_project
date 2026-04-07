@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'mptt',
     'django_ckeditor_5',
     'rest_framework',
-    'drf_spectacular'
+    'drf_spectacular',
+    'django_filters'
 ]
 LOCAL_APPS = [
     'apps.accounts',

@@ -82,7 +82,7 @@ class ProductReview(models.Model):
     user = models.ForeignKey("accounts.User", on_delete=models.CASCADE)
     title = models.CharField(_("title"), max_length=255)
     review = models.TextField(_("review"))
-    rank = models.IntegerField(_("rank"), validators=[])
+    rank = models.PositiveIntegerField(_("rank"))
     email = models.EmailField(_("email"))
     created_at = models.DateTimeField(_("created at"), auto_now_add=True)
 

@@ -1,10 +1,10 @@
-# from django.core.exceptions import ValidationError
-# from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 #
-# def validate_rating(rating):
-#     if rating < 0 or rating > 5:
-#         raise ValidationError(_('Rating must be between 0 and 5'))
-#     return rating
+def validate_rating(rank):
+    if rank > 5:
+        raise ValidationError(_('Rank must be between 0 and 5'))
+    return rank
 #
 #
 # # services.py yoki utils.py
